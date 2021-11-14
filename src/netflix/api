@@ -1,0 +1,5 @@
+https://api.themoviedb.org/3/search/movie?query=batman&api_key=cfe422613b250f702980a3bbf9e90716&page=1
+
+//https://v5.reactrouter.com/web/example/url-params
+
+https://www.npmjs.com/package/react-slugify

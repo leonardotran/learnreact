@@ -1,0 +1,13 @@
+.header__todo{
+    color: white;
+    text-align: center;
+
+}
+
+.footer__todo{
+    background-color: black;
+    min-height: 80px;
+    
+    color: white;
+    text-align: center;
+}
