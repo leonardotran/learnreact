@@ -1,5 +1,37 @@
+
 https://api.themoviedb.org/3/search/movie?query=batman&api_key=cfe422613b250f702980a3bbf9e90716&page=1
 
-//https://v5.reactrouter.com/web/example/url-params
+https://v5.reactrouter.com/web/example/url-params
 
 https://www.npmjs.com/package/react-slugify
+
+momentjs.com
+
+https://api.themoviedb.org/3/discover/movie?api_key=0aecc06bb4fadb06b5f071fef0c2ce6d&language=en-US&region=US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=2021-11-20&release_date.lte=2022-04-20&with_release_type=3|2
+
+https://gist.github.com/akexorcist/ea93ee47d39cf94e77802bc39c46589b
+
+https://reqres.in/
+"email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+
+https://v5.reactrouter.com/web/api/Hooks/usehistory
+    
+https://v5.reactrouter.com/web/example/auth-workflow
+
++Backend
+    -viet api
+    - nhan username va pas gui len 
+    - xu ly kiem tra va tra ve ket qua cho phia frontend
+    - tra ve token da duoc ma hoa 
++ frontend 
+    - call vao api 
+    - gui username va pass len 
+    - nhan token tu ben phia backend tra ve 
+    - giai ma token va lay thong tin ma backend da tra ve
+
+    ===> thong nhat voi nhau ve tai lieu (backend chu dong viet)
+    ==> ma hoa token thi 2 ben thong nhat voi nhau ve thuat toan cong nghe. 
+
+
+    => minh ko co backend, thi minh demo lam ca tu phia backend va frontend 

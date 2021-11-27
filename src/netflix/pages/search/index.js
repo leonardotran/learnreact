@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import LayoutMovies from '../../components/layout/index';
-import {Row, Col, Input} from 'antd';
+import {Row, Col, Input, Skeleton} from 'antd';
 import { apiMovie } from "../../services/movie";
 import {helper} from '../../helpers/common'
 import ListMovie from "../../components/list-movies/ListMovie";
@@ -67,6 +67,7 @@ const SearchMovies = () => {
                     />
                 </Col>
             </Row>
+            {loadingSearch ? <Skeleton active /> : <ListMovie movies={dataSearch}/> }
             <ListMovie movies={dataSearch}/>
             {dataSearch.length > 0
             &&
