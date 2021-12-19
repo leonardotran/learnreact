@@ -1,9 +1,15 @@
 import React from "react";
 import AppWeather from './pages/index';
+import {Provider} from 'react-redux';
+import configStore from "./store";
+
+const {store} = configStore();
 
 const App = () => {
     return (
-        <AppWeather/>
+        <Provider store={store}>
+            <AppWeather/>
+        </Provider>
     )
 }
 

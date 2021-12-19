@@ -1,7 +1,7 @@
 import * as types from './types';
 
 // tao cac actions
-const requestSearch = (city, lang ='vi') => ({
+export const requestSearch = (city, lang ='vi') => ({
     type: types.SEARCH_REQUEST,
     payload: { city, lang }
 });
