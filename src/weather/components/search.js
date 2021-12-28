@@ -1,13 +1,19 @@
 import React from 'react';
 import { Row, Col, Input } from 'antd';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {requestSearch} from '../actions/index';
+import { getStatusLoadingData } from '../reselects/weatherReselect';
+import { createStructuredSelector } from 'reselect';
 
 const { Search } = Input;
 
+
 const SearchWeather = () => {
     const dispatch = useDispatch();
-    const searchData = (name) => {
+    const {loadingState} = useSelector(createStructuredSelector({
+        loadingState: getStatusLoadingData
+    }));
+    const searchData = (name ) => {
         dispatch(requestSearch(name,'vi'));
     }
     return (
@@ -17,7 +23,7 @@ const SearchWeather = () => {
                 placeholder="name of city" 
                 enterButton="Search"
                 size="large" 
-                loading={false} 
+                loading={loadingState} 
                 onSearch={val => searchData(val)}
                 />
             </Col>
