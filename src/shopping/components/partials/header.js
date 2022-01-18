@@ -13,8 +13,8 @@ const HeaderShopping = () => {
                 <Menu.Item key="/">
                 <NavLink to="/">Home</NavLink>
                 </Menu.Item>
-                <Menu.Item key="/">
-                <NavLink to="/cart">Cart</NavLink>
+                <Menu.Item key="/cart">
+                <NavLink to="/cart">Cart (2)</NavLink>
                 </Menu.Item>            
                 </Menu>
         </Header>

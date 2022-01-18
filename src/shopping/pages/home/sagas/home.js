@@ -1,4 +1,4 @@
-import {call, put, take, takeEvery} from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
 import {
     loadingGetdataProduction,
     getDataProductSuccess,
@@ -20,6 +20,6 @@ function* homeSaga() {
     }
 }
 
-function* watchHomeSaga() {
+export function* watchHomeSaga() {
     yield takeEvery(REQUEST_DATA_PRODUCTIONS, homeSaga);
 }

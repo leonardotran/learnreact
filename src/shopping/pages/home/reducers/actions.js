@@ -22,3 +22,10 @@ export const getDataProductFail = (error) => ({
     type: GET_DATA_PRODUCT_FAIL,
     error
 });
+
+// cart shopping
+export const ADD_PRODUCT_TO_CART = Symbol('ADD_PRODUCT_TO_CART');
+export const addToCard = (id) => ({
+    type: ADD_PRODUCT_TO_CART,
+    id
+});

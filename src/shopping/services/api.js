@@ -11,5 +11,5 @@ const getAllDataProductsById = (id) => {
 
 export const apiShopping = {
     getAllDataProducts,
-    getAllDataProducts
+    getAllDataProductsById
 }
