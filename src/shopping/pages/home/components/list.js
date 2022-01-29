@@ -1,14 +1,24 @@
 import React from "react";
-import {Row, Col, Card, Button} from 'antd';
+import {Row, Col, Card, Button, message} from 'antd';
 import PropTypes from 'prop-types'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCard } from "../reducers/actions";
+import { getErrorMessage } from "../../carts/reselects/cart";
+import {createStructuredSelector} from 'reselect';
+import NumberFormat from 'react-number-format';
+
 const { Meta } = Card;
 
 const ListProducts = (props) => {
     const dispatch = useDispatch();
+    const {messageAddCart} = useSelector(createStructuredSelector({
+        messageAddCart: getErrorMessage
+    }));
     const addCart = (id) => {
         dispatch(addToCard(id));
+        if(messageAddCart === null) {
+            message.success('success', 2);
+        }
     }
     
     if(props.data.length < 0){
@@ -31,7 +41,12 @@ const ListProducts = (props) => {
                     >
                         <Meta title={item.name} />
                         <div>
-                            <p>Price: {item.price}</p>            
+                            <p>Price: <NumberFormat 
+                            value={item.price}
+                            displayType={'text'}
+                            thousandSeparator={true}
+                            /> 
+                        </p>            
                             <Button 
                             type="primary"
                             onClick={()=> addCart(item.id)}

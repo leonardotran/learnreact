@@ -1,7 +1,8 @@
 
 export const START_ADD_CART = Symbol('START_ADD_CART');
-export const startAddToCart = (start) => ({
+export const startAddToCart = (id, start) => ({
     type: START_ADD_CART,
+    id,
     start
 });
 
@@ -16,4 +17,10 @@ export const ADD_CART_FAIL = Symbol('ADD_CART_FAIL');
 export const addToCartFail = (error) => ({
     type: ADD_CART_FAIL,
     error
+});
+
+export const REMOVE_ITEM_CART = Symbol('REMOVE_ITEM_CART');
+export const removeItemCartById = (rowId) => ({
+    type: REMOVE_ITEM_CART,
+    rowId
 });

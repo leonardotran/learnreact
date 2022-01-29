@@ -46,7 +46,25 @@ export const cartReducer = (state = initialState, action) => {
             }
         }
             // them so luong mua - mac dinh mua 1 san pham
-            
+        case types.REMOVE_ITEM_CART:
+            const rowId = action.rowId;
+            // lay duoc san pham can xoa trong gio hang theo rowId 
+            // xoa bo thang day - cap nhat lai gio hang
+            // cap nhat lai tong tien
+            // cap nhat lai so luong san pham 
+            const newDataCart = state.dataCart.filter(item => item.id !== rowId); // chua nhung items ko bi xoa
+            const removeItem = state.dataCart.find(item => item.id === rowId); // bi xoa
+            const moneyRemoved = parseFloat(removeItem.price)*parseFloat(removeItem.qty);
+            const newTotalMoney = parseFloat(state.totalMoney) - moneyRemoved;
+            return {
+                ...state,
+                ...{
+                    dataCart: newDataCart,
+                    totalMoney: newTotalMoney,
+                    totalItems: state.totalItems-1
+                }
+
+            }
         default:
             return state;
     }
