@@ -5,7 +5,7 @@ import { getDataCart, getTotalMoney, } from './reselects/cart';
 import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
 import NumberFormat from 'react-number-format';
-import { removeItemCartById } from './reducers/actions';
+import { removeItemCartById, changeQuantity } from './reducers/actions';
 
 
 const CartPage = () => {
@@ -18,6 +18,11 @@ const CartPage = () => {
     const removeItem = id => {
         dispatch(removeItemCartById(id));
     }
+
+    const changeQuantityItem = (qty,id) => {
+        dispatch(changeQuantity(qty,id))
+    }
+
     if(carts.length === 0) {
         return (
             <LayoutShopping
@@ -58,8 +63,19 @@ const CartPage = () => {
                             /> 
                             </p>
                             <InputNumber min={1} max={10} defaultValue={item.qty}/>
+                            <p>Money: <NumberFormat
+                                value={item.price*item.qty}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                />
+                            </p>    
                             <p style={{marginTop: '10px'}}>
-                                <Button type="primary">Update</Button>
+                            <InputNumber 
+                                min={1} 
+                                max={10} 
+                                defaultValue={item.qty} 
+                                onChange={value => changeQuantityItem(value, item.id)}
+                            />
                                 <Button 
                                     style={{marginLeft:'10px'}} 
                                     type="primary" 

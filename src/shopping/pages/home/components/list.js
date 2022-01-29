@@ -2,11 +2,12 @@ import React from "react";
 import {Row, Col, Card, Button, message} from 'antd';
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from "react-redux";
-import { addToCard } from "../reducers/actions";
+import { addToCart } from "../reducers/actions";
 import { getErrorMessage } from "../../carts/reselects/cart";
 import {createStructuredSelector} from 'reselect';
 import NumberFormat from 'react-number-format';
-
+import slugify from "react-slugify";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 const ListProducts = (props) => {
@@ -14,8 +15,8 @@ const ListProducts = (props) => {
     const {messageAddCart} = useSelector(createStructuredSelector({
         messageAddCart: getErrorMessage
     }));
-    const addCart = (id) => {
-        dispatch(addToCard(id));
+    const addCart = (id, quantity=1) => {
+        dispatch(addToCart(id));
         if(messageAddCart === null) {
             message.success('success', 2);
         }
@@ -37,9 +38,12 @@ const ListProducts = (props) => {
                     <Card
                         hoverable
                         style={{ width: 300, marginBottom: '10px' }}
-                        cover={<img alt={item.name} src={item.image}/>}
+                        cover={
+                        <img alt={item.name} src={item.image}/>}
                     >
+                        <Link to={`detail/${slugify(item.name)}~${item.id}`}>
                         <Meta title={item.name} />
+                        </Link>
                         <div>
                             <p>Price: <NumberFormat 
                             value={item.price}

@@ -23,12 +23,18 @@ export const cartReducer = (state = initialState, action) => {
 
         case types.ADD_CART_SUCCESS:
             const infoPd = action.data;
-            const idPd = infoPd.id;
+            const idPd = action.id;
+            const quantityPd = action.quantity;
             // kiem tra xem san pham mua da ton tai trong gio hang chua.
             // neu ma chua ton tai thi them moi san pham vao gio hang.
             // neu da ton tai thi chi cap nhat so luong mua trong gio hang.
             const findPd = state.dataCart.find(item=> item.id === idPd);
             if(findPd) {
+                if(quantityPd === null) {
+                    infoPd.qty +=1;
+                } else {
+                    infoPd.qty += quantityPd;
+                }
                 infoPd.qty += 1;
                 return {
                     ...state,
@@ -36,13 +42,19 @@ export const cartReducer = (state = initialState, action) => {
                     errorCart: null
                 }
             } else {
-                infoPd.qty = 1;
+                if(quantityPd === null) {
+                    infoPd.qty = 1;
+                } else {
+                    infoPd.qty = quantityPd;
+                }
                 return {
+                    ...state,
+                    ...{
                     dataCart: [...state.dataCart, infoPd],
                     errorCart: null,
                     totalMoney: parseFloat(state.totalMoney) + parseFloat(infoPd.price),
                     totalItems: state.totalItems+1
-                
+                    }
             }
         }
             // them so luong mua - mac dinh mua 1 san pham
@@ -65,6 +77,27 @@ export const cartReducer = (state = initialState, action) => {
                 }
 
             }
+        case types.CHANGE_QUANTITY_ITEM_CART:
+            const quantity = action.qty; 
+            const idCart = action.rowId;
+            // cap nhat lai so luong mua cua 1 san pham 
+            // cap nhat lai tong tien 
+            // ko cap nhat so luong san pham trong gio hang
+            // ko cap nhat lai gio hang moi 
+            const newChangeDataCart = state.dataCart.map(item => {
+                return item.id === idCart ? {...item, qty: quantity} : item;
+            });
+            const newTotalMoneyChange = newChangeDataCart.map(item => parseFloat(item.price) * parseFloat(item.qty)).reduce((pre,next) => pre+next);
+            return {
+                ...state,
+                ...{
+                    dataCart: newChangeDataCart,
+                    totalMoney: newTotalMoneyChange
+
+                }
+            }
+
+
         default:
             return state;
     }

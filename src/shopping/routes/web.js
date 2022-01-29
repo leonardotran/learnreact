@@ -11,6 +11,7 @@ import { Skeleton } from "antd";
 
 const HomePage = lazy(() => import('../pages/home/index'));
 const CartPage = lazy(() => import('../pages/carts/index'));
+const DetailPage = lazy(() => import('../pages/detail/index'));
 
 const RouteShopping = () => {
     return (
@@ -23,8 +24,9 @@ const RouteShopping = () => {
                     <Route path="/cart">
                         <CartPage/>
                     </Route>
-                        
-                    
+                    <Route path="/detail/:slug~id">
+                        <DetailPage/>
+                    </Route>
                 </Switch>
             </Suspense>
         </Router>

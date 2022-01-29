@@ -24,3 +24,10 @@ export const removeItemCartById = (rowId) => ({
     type: REMOVE_ITEM_CART,
     rowId
 });
+
+export const CHANGE_QUANTITY_ITEM_CART = Symbol('CHANGE_QUANTITY_ITEM_CART');
+export const changeQuantity = (qty, rowId) => ({
+    type: CHANGE_QUANTITY_ITEM_CART,
+    qty,
+    rowId
+})

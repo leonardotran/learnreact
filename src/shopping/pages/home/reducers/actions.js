@@ -3,7 +3,7 @@ export const getDataProducts = () => ({
     type: REQUEST_DATA_PRODUCTIONS
 });
 
-// sage
+// saga
 
 export const LOADING_GET_DATA = Symbol('LOADING_GET_DATA');
 export const loadingGetdataProduction = (loading) => ({
@@ -25,7 +25,8 @@ export const getDataProductFail = (error) => ({
 
 // cart shopping
 export const ADD_PRODUCT_TO_CART = Symbol('ADD_PRODUCT_TO_CART');
-export const addToCard = (id) => ({
+export const addToCart = (id, qty = null) => ({
     type: ADD_PRODUCT_TO_CART,
-    id
+    id,
+    qty
 });
