@@ -10,3 +10,4 @@ const searchMovies = async (key) => {
 export const api = {
     searchMovies
 }
+//
