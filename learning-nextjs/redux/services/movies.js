@@ -6,3 +6,7 @@ const searchMovies = async (key) => {
     const result = await response.status === 200 ? await response.data : {};
     return result;
 }
+
+export const api = {
+    searchMovies
+}
