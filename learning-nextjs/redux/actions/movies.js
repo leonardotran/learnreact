@@ -4,9 +4,10 @@ export const START_SEARCH_MOVIES = Symbol('START_SEARCH_MOVIES');
 export const SEARCH_MOVIES_SUCCESS = Symbol('SEARCH_MOVIES_SUCCESS');
 export const SEARCH_MOVIES_FAIL = Symbol('SEARCH_MOVIES_FAIL');
 
-export const searchMovieByKeyword = keyword => ({
+export const searchMovieByKeyword = (keyword, page = 1) => ({
     type: SEARCH_MOVIES,
-    keyword
+    keyword,
+    page
 });
 
 export const startSearch = start => ({
